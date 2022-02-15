@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="heart_icon.ico">
+    <title>hearts</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="hearts"></div>
+        <h1 class="title">Feliz San Valentin</h1>
+        <audio controls class="audio">
+            <source src="music.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+    <script src="anime.min.js"></script>
+    <script>
+        const container = document.querySelector('.container');
+        for(var i=1; i<=100; i++ ){
+            const hearts = document.createElement('div');
+            hearts.classList.add('hearts');
+            container.appendChild(hearts);
+        }
+            
+        function animatedHearts(){
+             anime({
+                targets: '.hearts',
+                translateX: function(){
+                    return anime.random(-700, 700);
+                },
+                translateY: function(){
+                    return anime.random(-500, 500);
+                },
+                rotate: 45,
+                scale: function(){
+                    return anime.random(1, 5);
+                },
+                easing: 'easeInOutBack',
+                duration: 3000,
+                delay: anime.stagger(10),
+                complete: animatedHearts,
+            })
+        }
+        animatedHearts();
+    </script>
+</body>
+</html>
